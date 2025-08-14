@@ -1,0 +1,29 @@
+{% load static %}
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{% block title %}Parrainage — Plateforme{% endblock %}</title>
+
+  <!-- Bootstrap local -->
+  <link rel="stylesheet" href="{% static 'vendor/bootstrap/css/bootstrap.min.css' %}">
+
+  <!-- Ton design -->
+  <link rel="stylesheet" href="{% static 'css/app.css' %}">
+</head>
+<body>
+
+  <!-- Ici, reproduis la navbar de ton index.html (fidèle à ton design) -->
+  {% include "_partials/navbar.html" %}
+
+  <main class="container py-4">
+    {% block content %}{% endblock %}
+  </main>
+
+  {% include "_partials/footer.html" %}
+
+  <script src="{% static 'vendor/bootstrap/js/bootstrap.bundle.min.js' %}"></script>
+  <script src="{% static 'js/app.js' %}"></script>
+</body>
+</html>

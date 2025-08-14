@@ -1,0 +1,96 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Clients • ParrainApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/app.css" rel="stylesheet">
+</head>
+<body data-page="clients">
+  <!-- TOP BAR (horizontal) -->
+  <header class="topbar border-bottom sticky-top">
+    <div class="topbar-gradient">
+      <div class="container py-3">
+        <div class="d-flex align-items-center justify-content-between gap-3">
+          <a class="navbar-brand d-flex align-items-center gap-2 text-white text-decoration-none" href="dashboard.html">
+            <span class="brand-dot"></span>
+            <span class="fw-bold">ParrainApp</span>
+          </a>
+          <form class="d-none d-md-flex" role="search" style="min-width: 380px;">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text">🔎</span>
+              <input class="form-control" type="search" placeholder="Rechercher (clients, parrains…)" aria-label="Search">
+            </div>
+          </form>
+          <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-sm btn-outline-light" href="parrains.html">Inscrire un parrain</a>
+            <a class="btn btn-sm btn-primary" href="parraine.html">Nouveau parrainé</a>
+            <button class="btn btn-sm btn-outline-light d-none d-md-inline-flex">Aide</button>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">Johann</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORIZONTAL NAV (pills) -->
+    <div class="topbar-nav bg-white">
+      <div class="container">
+        <ul class="nav nav-pills gap-1 py-2" id="mainNav">
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Tableau de bord</a></li>
+          <li class="nav-item"><a class="nav-link" href="parrains.html">Parrains</a></li>
+          <li class="nav-item"><a class="nav-link" href="parraine.html">Parrainés</a></li>
+          <li class="nav-item"><a class="nav-link" href="clients.html">Clients</a></li>
+          <li class="nav-item"><a class="nav-link" href="recompenses.html">Récompenses</a></li>
+          <li class="nav-item"><a class="nav-link" href="stats.html">Statistiques</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    
+<header class="mb-4">
+  <h1 class="h4 section-title mb-1">Clients</h1>
+  <div class="text-secondary">Recherche et fiches clients.</div>
+</header>
+
+<div class="card shadow-sm mb-3">
+  <div class="card-body">
+    <div class="row g-2 align-items-end">
+      <div class="col-md-9">
+        <label class="form-label">Recherche</label>
+        <input class="form-control" placeholder="mail, numéro, nom, prénom…">
+      </div>
+      <div class="col-md-3 d-grid"><button class="btn btn-outline-primary">Rechercher</button></div>
+    </div>
+  </div>
+</div>
+
+<div class="card shadow-sm">
+  <div class="table-responsive">
+    <table class="table table-hover align-middle mb-0">
+      <thead class="table-light"><tr><th>Nom</th><th>Email</th><th>Téléphone</th><th>Parrainages</th><th></th></tr></thead>
+      <tbody>
+        <tr><td>Tailame Mathieu</td><td>mathieu@yopmail.com</td><td>06 94 87 65 51</td><td>10</td><td class="text-end"><a class="btn btn-sm btn-primary" href="client.html">Ouvrir</a></td></tr>
+        <tr><td>Dubois Émilie</td><td>emilie@mail.com</td><td>06 22 33 44 55</td><td>2</td><td class="text-end"><a class="btn btn-sm btn-primary" href="client.html">Ouvrir</a></td></tr>
+        <tr><td>Dupont Marie</td><td>marie@mail.com</td><td>06 11 22 33 44</td><td>0</td><td class="text-end"><a class="btn btn-sm btn-primary" href="client.html">Ouvrir</a></td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

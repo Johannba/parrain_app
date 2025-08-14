@@ -1,0 +1,37 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Accepter l'invitation{% endblock %}
+{% block content %}
+<h1 class="h4 mb-3">Invitation pour {{ invite.company.name }}</h1>
+
+{% if existing_user %}
+<div class="alert alert-info">Un compte existe déjà pour {{ invite.email }}.</div>
+<form method="post">
+  {% csrf_token %}
+  <button class="btn btn-primary" name="accept_existing" value="1">Rattacher mon compte</button>
+</form>
+<p class="text-muted small mt-2">Après rattachement, connectez-vous avec vos identifiants existants.</p>
+
+{% else %}
+<div class="card">
+  <div class="card-body">
+    <form method="post">
+      {% csrf_token %}
+      <div class="mb-3">
+        <label class="form-label">Email</label>
+        {% render_field form.email class+="form-control" %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Mot de passe</label>
+        {% render_field form.password1 class+="form-control" %}
+      </div>
+      <div class="mb-3">
+        <label class="form-label">Confirmation</label>
+        {% render_field form.password2 class+="form-control" %}
+      </div>
+      <button class="btn btn-primary">Créer mon compte et accepter</button>
+    </form>
+  </div>
+</div>
+{% endif %}
+{% endblock %}

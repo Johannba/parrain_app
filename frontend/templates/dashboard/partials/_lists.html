@@ -1,0 +1,47 @@
+{# Listes (entreprises, activité) #}
+<div class="row g-3">
+  <div class="col-lg-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <div class="d-flex justify-content-between align-items-center mb-2">
+          <h6 class="mb-0">
+            {% if is_superadmin %}Entreprises récentes{% else %}Mon entreprise{% endif %}
+          </h6>
+          {% if is_superadmin %}
+            <a class="btn btn-sm btn-primary" href="{% url 'companies:create' %}">Nouvelle</a>
+          {% endif %}
+        </div>
+
+        {% if companies %}
+          <div class="list-group list-group-flush">
+            {% for c in companies %}
+              <a class="list-group-item list-group-item-action d-flex justify-content-between align-items-center"
+                 href="{% url 'companies:detail' c.slug %}">
+                <div class="d-flex flex-column">
+                  <span class="fw-medium small">{{ c.name }}</span>
+                  <span class="text-muted xsmall">Créée le {{ c.created_at|date:"d/m/Y" }}</span>
+                </div>
+                <span class="badge rounded-pill text-bg-light">
+                  {{ c.memberships.count }} membre{{ c.memberships.count|pluralize }}
+                </span>
+              </a>
+            {% endfor %}
+          </div>
+        {% else %}
+          <div class="text-muted small">Aucune entreprise pour le moment.</div>
+        {% endif %}
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-6">
+    <div class="card h-100 shadow-sm">
+      <div class="card-body">
+        <h6 class="mb-2">Activité récente</h6>
+        <ul class="list-unstyled mb-0 small">
+          <li class="text-muted">Invitations envoyées, nouvelles inscriptions, validations… (à brancher)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

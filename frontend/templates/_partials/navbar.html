@@ -1,0 +1,65 @@
+<header class="topbar border-bottom sticky-top">
+  <div class="topbar-gradient">
+    <div class="container py-3">
+      <div class="d-flex align-items-center justify-content-between gap-3">
+        <a class="navbar-brand d-flex align-items-center gap-2 text-white text-decoration-none" href="{% url 'dashboard:home' %}">
+          <span class="brand-dot"></span>
+          <span class="fw-bold">ParrainApp</span>
+        </a>
+              {% if request.user.is_authenticated and request.user.is_superadmin %}
+                  <a class="btn btn-sm btn-outline-light" href="{% url 'companies:create' %}">
+                    Nouvelle entreprise
+                  </a>
+              {% endif %}
+
+
+        <form class="d-none d-md-flex" role="search" style="min-width: 380px;">
+          <div class="input-group input-group-sm">
+            <span class="input-group-text">🔎</span>
+            <input class="form-control" type="search" placeholder="Rechercher (clients, parrains…)" aria-label="Search">
+          </div>
+        </form>
+        <div class="d-flex align-items-center gap-2">
+          <a class="btn btn-sm btn-outline-light" href="{% url 'referrals:parrains_list' %}">Inscrire un parrain</a>
+          <a class="btn btn-sm btn-primary" href="{% url 'referrals:parraine_list' %}">Nouveau parrainé</a>
+          <button class="btn btn-sm btn-outline-light d-none d-md-inline-flex">Aide</button>
+          {% if request.user.is_authenticated %}
+              <div class="dropdown">
+                <button class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">
+                  {# Affiche d'abord nom complet, sinon username, sinon email #}
+                  {{ request.user.get_full_name|default:request.user.username|default:request.user.email }}
+                </button>
+                <ul class="dropdown-menu dropdown-menu-end">
+                  <li><a class="dropdown-item" href="#">Profil</a></li>
+                  <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                  <li><hr class="dropdown-divider"></li>
+                  <li>
+                    <form method="post" action="{% url 'accounts:logout' %}">
+                      {% csrf_token %}
+                      <button class="dropdown-item" type="submit">Déconnexion</button>
+                    </form>
+                  </li>
+                </ul>
+              </div>
+            {% else %}
+              <a class="btn btn-sm btn-outline-light" href="{% url 'accounts:login' %}">Se connecter</a>
+            {% endif %}
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- HORIZONTAL NAV (pills) -->
+  <div class="topbar-nav bg-white">
+    <div class="container">
+      <ul class="nav nav-pills">
+        <li class="nav-item">
+        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard:home' %}">Tableau de bord</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'referrals:home' %}">Parrains</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'referrals:home' %}">Parrainés</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard:home' %}">Récompenses</a></li>
+        <li class="nav-item"><a class="nav-link" href="{% url 'dashboard:home' %}">Statistiques</a></li>
+      </ul>
+    </div>
+  </div>
+</header>

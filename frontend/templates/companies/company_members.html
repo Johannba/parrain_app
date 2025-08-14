@@ -1,0 +1,88 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+{% block title %}Membres — {{ company.name }}{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h1 class="h4 mb-0">Membres — {{ company.name }}</h1>
+  <div class="d-flex gap-2">
+    <a class="btn btn-outline-secondary btn-sm" href="{% url 'companies:detail' company.slug %}">Détail</a>
+    <a class="btn btn-primary btn-sm" href="{% url 'companies:invite_create' company.slug %}">Inviter</a>
+  </div>
+</div>
+
+<div class="row">
+  <div class="col-lg-7">
+    <div class="card mb-3">
+      <div class="card-body">
+        <h6 class="mb-3">Liste des membres</h6>
+        <div class="table-responsive">
+          <table class="table align-middle">
+            <thead>
+              <tr>
+                <th>Email</th>
+                <th>Nom</th>
+                <th>Rôle</th>
+                <th>Statut</th>
+              </tr>
+            </thead>
+            <tbody>
+              {% for m in members %}
+              <tr>
+                <td class="small">{{ m.user.email }}</td>
+                <td class="small">{{ m.user.get_full_name|default:"—" }}</td>
+                <td class="small">{{ m.get_role_display }}</td>
+                <td class="small">{{ m.is_active|yesno:"Actif,Inactif" }}</td>
+              </tr>
+              {% empty %}
+              <tr><td colspan="4" class="text-muted small">Aucun membre pour le moment.</td></tr>
+              {% endfor %}
+            </tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="col-lg-5">
+    <div class="card">
+      <div class="card-body">
+        <h6 class="mb-3">Créer un Admin d’entreprise</h6>
+        <form method="post">
+          {% csrf_token %}
+          <div class="mb-2">
+            <label class="form-label">Email</label>
+            {% render_field form.email class+="form-control" placeholder="admin@entreprise.com" %}
+          </div>
+          <div class="row">
+            <div class="col">
+              <div class="mb-2">
+                <label class="form-label">Prénom</label>
+                {% render_field form.first_name class+="form-control" %}
+              </div>
+            </div>
+            <div class="col">
+              <div class="mb-2">
+                <label class="form-label">Nom</label>
+                {% render_field form.last_name class+="form-control" %}
+              </div>
+            </div>
+          </div>
+          <div class="mb-2">
+            <label class="form-label">Mot de passe</label>
+            {% render_field form.password1 class+="form-control" %}
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Confirmation</label>
+            {% render_field form.password2 class+="form-control" %}
+          </div>
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger py-2">{{ form.non_field_errors }}</div>
+          {% endif %}
+          <button class="btn btn-primary">Créer / Rattacher</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

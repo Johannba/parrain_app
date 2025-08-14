@@ -1,0 +1,144 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Fiche client • ParrainApp</title>
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+  <link href="assets/css/app.css" rel="stylesheet">
+</head>
+<body data-page="client">
+  <!-- TOP BAR (horizontal) -->
+  <header class="topbar border-bottom sticky-top">
+    <div class="topbar-gradient">
+      <div class="container py-3">
+        <div class="d-flex align-items-center justify-content-between gap-3">
+          <a class="navbar-brand d-flex align-items-center gap-2 text-white text-decoration-none" href="dashboard.html">
+            <span class="brand-dot"></span>
+            <span class="fw-bold">ParrainApp</span>
+          </a>
+          <form class="d-none d-md-flex" role="search" style="min-width: 380px;">
+            <div class="input-group input-group-sm">
+              <span class="input-group-text">🔎</span>
+              <input class="form-control" type="search" placeholder="Rechercher (clients, parrains…)" aria-label="Search">
+            </div>
+          </form>
+          <div class="d-flex align-items-center gap-2">
+            <a class="btn btn-sm btn-outline-light" href="parrains.html">Inscrire un parrain</a>
+            <a class="btn btn-sm btn-primary" href="parraine.html">Nouveau parrainé</a>
+            <button class="btn btn-sm btn-outline-light d-none d-md-inline-flex">Aide</button>
+            <div class="dropdown">
+              <button class="btn btn-sm btn-outline-light dropdown-toggle" data-bs-toggle="dropdown">Johann</button>
+              <ul class="dropdown-menu dropdown-menu-end">
+                <li><a class="dropdown-item" href="#">Profil</a></li>
+                <li><a class="dropdown-item" href="#">Paramètres</a></li>
+                <li><hr class="dropdown-divider"></li>
+                <li><a class="dropdown-item" href="#">Déconnexion</a></li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- HORIZONTAL NAV (pills) -->
+    <div class="topbar-nav bg-white">
+      <div class="container">
+        <ul class="nav nav-pills gap-1 py-2" id="mainNav">
+          <li class="nav-item"><a class="nav-link" href="dashboard.html">Tableau de bord</a></li>
+          <li class="nav-item"><a class="nav-link" href="parrains.html">Parrains</a></li>
+          <li class="nav-item"><a class="nav-link" href="parraine.html">Parrainés</a></li>
+          <li class="nav-item"><a class="nav-link" href="clients.html">Clients</a></li>
+          <li class="nav-item"><a class="nav-link" href="recompenses.html">Récompenses</a></li>
+          <li class="nav-item"><a class="nav-link" href="stats.html">Statistiques</a></li>
+        </ul>
+      </div>
+    </div>
+  </header>
+
+  <main class="container my-4">
+    
+<header class="mb-4">
+  <h1 class="h4 section-title mb-1">Fiche client</h1>
+  <div class="text-secondary">Informations, cadeaux et historique</div>
+</header>
+
+<div class="row g-3">
+  <div class="col-lg-4">
+    <div class="card shadow-sm h-100"><div class="card-body">
+      <div class="d-flex justify-content-between mb-2">
+        <h3 class="h6 mb-0">Informations</h3>
+        <span class="badge text-bg-info">Parrain</span>
+      </div>
+      <div class="vstack gap-1 small">
+        <div><span class="text-secondary">Nom :</span> Tailame</div>
+        <div><span class="text-secondary">Prénom :</span> Mathieu</div>
+        <div><span class="text-secondary">Téléphone :</span> 06 78 36 83 89</div>
+        <div><span class="text-secondary">Email :</span> mathieu@yopmail.com</div>
+      </div>
+      <hr>
+      <div class="d-flex justify-content-between align-items-center">
+        <div class="small"><span class="text-secondary">A parrainé :</span> <strong>10</strong> clients</div>
+        <a class="btn btn-sm btn-outline-primary" href="clients.html">Retour</a>
+      </div>
+    </div></div>
+  </div>
+
+  <div class="col-lg-8">
+    <div class="row g-3">
+      <div class="col-12">
+        <div class="card shadow-sm"><div class="card-header">Cadeaux obtenus</div>
+          <div class="card-body">
+            <div class="row g-2">
+              <div class="col-md-6">
+                <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+                  <div><div class="fw-semibold">-15% de remise</div><small class="text-secondary">Obtenu le 09/10/2024</small></div>
+                  <span class="badge text-bg-success">OK</span>
+                </div>
+              </div>
+              <div class="col-md-6">
+                <div class="alert alert-success d-flex justify-content-between align-items-center" role="alert">
+                  <div><div class="fw-semibold">1 article acheté = le 2e à -50%</div><small class="text-secondary">Obtenu le 15/10/2024</small></div>
+                  <span class="badge text-bg-success">OK</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card shadow-sm"><div class="card-header">Cadeaux en attente</div>
+          <div class="card-body">
+            <div class="list-group">
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div><div class="fw-semibold">Récompense n°1</div><small class="text-secondary">Créée le 09/12/2024</small></div>
+                <button class="btn btn-sm btn-outline-primary">Envoyer par mail</button>
+              </div>
+              <div class="list-group-item d-flex justify-content-between align-items-center">
+                <div><div class="fw-semibold">Récompense n°2</div><small class="text-secondary">Créée le 08/12/2024</small></div>
+                <button class="btn btn-sm btn-outline-primary">Envoyer par mail</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="card shadow-sm"><div class="card-header">Historique des parrainages</div>
+          <div class="table-responsive">
+            <table class="table mb-0 align-middle">
+              <thead class="table-light"><tr><th>Parrainé</th><th>Date</th><th>Récompense</th></tr></thead>
+              <tbody><tr><td>Dubois Émilie</td><td>09/12/2024</td><td>-15%</td></tr><tr><td>Dubois Pierre</td><td>08/12/2024</td><td>2e à -50%</td></tr></tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="assets/js/app.js"></script>
+</body>
+</html>

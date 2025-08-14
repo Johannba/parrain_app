@@ -1,0 +1,30 @@
+{% extends "base.html" %}
+{% load widget_tweaks %}
+
+{% block title %}Connexion{% endblock %}
+{% block content %}
+<div class="row justify-content-center">
+  <div class="col-md-5">
+    <h1 class="h4 mb-4">Connexion</h1>
+    <div class="card shadow-sm">
+      <div class="card-body">
+        <form method="post" novalidate>
+          {% csrf_token %}
+          {% if form.non_field_errors %}
+            <div class="alert alert-danger">{{ form.non_field_errors }}</div>
+          {% endif %}
+          <div class="mb-3">
+            <label class="form-label">Email</label>
+            {{ form.username|add_class:"form-control" }}
+          </div>
+          <div class="mb-3">
+            <label class="form-label">Mot de passe</label>
+            {{ form.password|add_class:"form-control" }}
+          </div>
+          <button class="btn btn-primary w-100" type="submit">Se connecter</button>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}

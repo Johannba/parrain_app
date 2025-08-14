@@ -1,0 +1,28 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Tableau de bord{% endblock %}
+
+{% block content %}
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <div>
+    <h1 class="h4 mb-0">Tableau de bord</h1>
+    {% if current_company %}
+      <div class="text-muted small">Entreprise courante : <strong>{{ current_company.name }}</strong></div>
+    {% elif is_superadmin %}
+      <div class="text-muted small">Vue Superadmin — contrôle global</div>
+    {% endif %}
+  </div>
+  <div class="d-flex gap-2">
+    {% if is_superadmin %}
+      <a class="btn btn-sm btn-primary" href="{% url 'companies:create' %}">Créer une entreprise</a>
+    {% elif current_company %}
+      <a class="btn btn-sm btn-outline-primary" href="{% url 'companies:members' current_company.slug %}">Gérer les membres</a>
+    {% endif %}
+  </div>
+</div>
+
+{% include "dashboard/partials/_quick_actions.html" %}
+{% include "dashboard/partials/_kpis.html" %}
+{% include "dashboard/partials/_charts.html" %}
+{% include "dashboard/partials/_lists.html" %}
+{% endblock %}

@@ -1,0 +1,12 @@
+{# Actions rapides (si tu veux un bandeau de CTA) #}
+<div class="card shadow-sm mb-3">
+  <div class="card-body d-flex flex-wrap gap-2">
+    {% if is_superadmin %}
+      <a class="btn btn-primary btn-sm" href="{% url 'companies:create' %}">Créer une entreprise</a>
+    {% endif %}
+    {% if current_company %}
+      <a class="btn btn-outline-primary btn-sm" href="{% url 'companies:members' current_company.slug %}">Gérer les membres</a>
+      <a class="btn btn-outline-secondary btn-sm" href="{% url 'companies:invite_create' current_company.slug %}">Inviter</a>
+    {% endif %}
+  </div>
+</div>

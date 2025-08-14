@@ -1,0 +1,19 @@
+{% extends "base.html" %}
+{% block title %}Entreprise{% endblock %}
+{% block content %}
+
+
+
+<div class="d-flex align-items-center justify-content-between mb-3">
+  <h1 class="h3 mb-0">{{ company.name }}</h1>
+  <div class="d-flex gap-2">
+    <a class="btn btn-outline-primary" href="{% url 'companies:members' company.slug %}">Membres</a>
+    <a class="btn btn-primary" href="{% url 'companies:invite_create' company.slug %}">Inviter un Admin/Opérateur</a>
+</div>
+
+<div class="card">
+  <div class="card-body">
+    <p class="mb-0 text-muted">Slug: {{ company.slug }} — Actif: {{ company.is_active|yesno:"Oui,Non" }}</p>
+  </div>
+</div>
+{% endblock %}
